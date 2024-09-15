@@ -4,13 +4,15 @@ A Python script to download images from the Octodex website.
 
 ## Features
 
-- Downloads Octodex images based on specified criteria.
+- Downloads Octodex images with 'data-src' attribute.
+- Skips images without the required attribute.
 - Handles image URLs correctly to avoid errors.
 
 ## Requirements
 
 - Python 3.x
 - Requests library
+- BeautifulSoup4 library
 
 ## Installation
 
@@ -35,6 +37,8 @@ Run the script to download images:
 python downloader.py
 ```
 
+The script will create an 'octodex_images' directory and save the downloaded images there.
+
 ## Contributing
 
 Feel free to submit issues or pull requests for improvements.
@@ -42,4 +46,3 @@ Feel free to submit issues or pull requests for improvements.
 ## License
 
 This project is licensed under the MIT License.
-

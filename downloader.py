@@ -17,26 +17,35 @@ images = soup.find_all('img')
 
 # Loop through each image and download it
 for img in images:
-    img_url = img['src']
-    
-    # Ensure the URL is complete
-    if not img_url.startswith('http'):
-        img_url = 'https://octodex.github.com' + img_url  # Prepend the base URL
-
-    img_name = img['alt'] + '.png'  # Use the alt text as the filename
-    img_path = os.path.join('octodex_images', img_name)
-
-    # Check if the image is already downloaded
-    if os.path.exists(img_path):
-        print(f"{img_name} already downloaded.")
-    else:
-        print(f"Downloading {img_name}...")
-        # Download the image
-        img_response = requests.get(img_url)
+    if 'data-src' in img.attrs:
+        img_url = img['data-src']
         
-        # Save the image
-        with open(img_path, 'wb') as f:
-            f.write(img_response.content)
-        print(f"{img_name} downloaded successfully!")
+        # Ensure the URL is complete
+        if not img_url.startswith('http'):
+            img_url = 'https://octodex.github.com' + img_url  # Prepend the base URL
+
+        print(f"Attempting to download from URL: {img_url}")  # Print the URL
+
+        img_name = img['alt'] + '.png'  # Use the alt text as the filename
+        img_path = os.path.join('octodex_images', img_name)
+
+        # Check if the image is already downloaded
+        if os.path.exists(img_path):
+            print(f"{img_name} already downloaded.")
+        else:
+            print(f"Downloading {img_name}...")
+            # Download the image
+            img_response = requests.get(img_url)
+            
+            # Check if the download was successful
+            if img_response.status_code == 200:
+                # Save the image
+                with open(img_path, 'wb') as f:
+                    f.write(img_response.content)
+                print(f"{img_name} downloaded successfully!")
+            else:
+                print(f"Failed to download {img_name}. Status code: {img_response.status_code}")
+    else:
+        print(f"Skipping image without 'data-src' attribute.")
 
 print("All images processed.")

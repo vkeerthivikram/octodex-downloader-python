@@ -1,14 +1,16 @@
 # Octodex Downloader
 
-A Python script to download images from the Octodex website.
+A Python script for effortlessly downloading images from the Octodex website.
 
 ## Features
 
-- Downloads Octodex images with 'data-src' attribute.
-- Skips images without the required attribute.
-- Handles image URLs correctly to avoid errors.
+- **Image Downloading**: Downloads Octodex images that have the `data-src` attribute.
+- **Smart Skipping**: Automatically skips images without the required attribute.
+- **Error Handling**: Ensures image URLs are valid to avoid download errors.
 
 ## Requirements
+
+To run this project, you'll need:
 
 - Python 3.x
 - Requests library
@@ -16,32 +18,34 @@ A Python script to download images from the Octodex website.
 
 ## Installation
 
-1. Clone the repository:
+Follow these steps to get the project up and running:
+
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/octodex-downloader-python.git
    ```
-2. Navigate to the project directory:
+2. **Navigate to the project directory**:
    ```bash
    cd octodex-downloader-python
    ```
-3. Install the required packages:
+3. **Install the required packages**:
    ```bash
    pip install -r requirements.txt
    ```
 
 ## Usage
 
-Run the script to download images:
+To download images, simply run the script:
 
 ```bash
 python downloader.py
 ```
 
-The script will create an 'octodex_images' directory and save the downloaded images there.
+The script will create an `octodex_images` directory and save all downloaded images there.
 
 ## Contributing
 
-Feel free to submit issues or pull requests for improvements.
+Contributions are welcome! Feel free to submit issues or pull requests to enhance the project.
 
 ## License
 
